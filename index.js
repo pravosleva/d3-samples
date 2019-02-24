@@ -14,9 +14,11 @@ const originalData = [
     },
     bids: {
       total: 494674, // Used!
-      registeredInLastDay: 551,
-      fwdInLastDay: 8,
-      paiedFromCreditCardsRUB: 16250,
+      lastDay: {
+        total: 551,
+        fwd: 8,
+        paiedFromCreditCardsRUB: 16250,
+      },
     },
   },
   {
@@ -31,9 +33,11 @@ const originalData = [
     },
     bids: {
       total: 495256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -48,9 +52,11 @@ const originalData = [
     },
     bids: {
       total: 498256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -65,9 +71,11 @@ const originalData = [
     },
     bids: {
       total: 499256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -82,9 +90,11 @@ const originalData = [
     },
     bids: {
       total: 501256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -99,9 +109,11 @@ const originalData = [
     },
     bids: {
       total: 521256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -116,9 +128,11 @@ const originalData = [
     },
     bids: {
       total: 571256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -133,9 +147,11 @@ const originalData = [
     },
     bids: {
       total: 671256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
   {
@@ -150,19 +166,21 @@ const originalData = [
     },
     bids: {
       total: 771256,
-      registeredInLastDay: 557,
-      fwdInLastDay: 3,
-      paiedFromCreditCardsRUB: 28631,
+      lastDay: {
+        total: 557,
+        fwd: 3,
+        paiedFromCreditCardsRUB: 28631,
+      },
     },
   },
 ];
 const bidsTotalDataset = originalData.map(e => e.bids.total);
 // const bidsTotalDataset = [100, 200, 400, 500, 600, 100, 1000];
-const elm = d3.select('div[class=d3-tst]');
+const elm = d3.select('div[name=d3-tst]');
 
-// --- Ex #1
+// --- Tst #1
 
-d3.select('h1').text('Ex #1');
+// d3.select('h1').text('Tst #1');
 elm.append('p').text('1');
 elm.append('p').text('2');
 elm.append('p').text('3');
@@ -170,9 +188,9 @@ d3.selectAll('p').style('color', 'blue');
 
 // ---
 
-// --- Ex #2
+// --- Tst #2
 
-d3.select('h1').text('Ex #2');
+// d3.select('h1').text('Tst #2');
 d3.selectAll('p').remove();
 // bidsTotalDataset.map(e => elm.append('p').text(e));
 elm.selectAll('p')
@@ -183,9 +201,9 @@ elm.selectAll('p')
 
 // ---
 
-// --- Ex #3
+// --- Tst #3
 
-const svgWidth = 600, svgHeight = 250, barPadding = 5;
+const svgWidth = 600, svgHeight = 150, barPadding = 5;
 const barWidth = (svgWidth / bidsTotalDataset.length);
 // const widthScale = d3.scaleBand().domain(d3.range(0, bidsTotalDataset.length)).range([0, svgWidth]);
 const heightScale = d3.scaleLinear()
@@ -195,7 +213,8 @@ const heightScale = d3.scaleLinear()
   ])
   .range([0, svgHeight]);
 
-d3.select('h1').text('Ex #3');
+// d3.select('h1').text('Tst #3');
+elm.append('h2').text('Tst #3: Barchart');
 d3.selectAll('p').remove();
 
 let svg = elm.append('svg')
@@ -217,13 +236,14 @@ const barChart = svg.selectAll('rect')
 
 // ---
 
-// --- Ex #4
+// --- Tst #3 -> #4 Barchart with labels
 
 const yScale = d3.scaleLinear()
   .domain([0, d3.max(originalData.map(e => e.bids.total))])
   .range([0, svgHeight]);
 
-d3.select('h1').text('Ex #4');
+// d3.select('h1').text('Tst #4');
+// elm.append('h2').text('Tst #4: Barchart p2');
 // d3.selectAll('p').remove();
 
 const text = svg.selectAll('text')
@@ -238,9 +258,10 @@ const text = svg.selectAll('text')
 
 // ---
 
-// --- Ex #5
+// --- Tst #5
 
-d3.select('h1').text('Ex #4 / #5');
+// d3.select('h1').text('Tst #4 / #5');
+elm.append('h2').text('Tst #5: Line');
 // d3.selectAll('p').remove();
 // d3.selectAll('svg').remove();
 
@@ -304,11 +325,62 @@ originalData.map(e => {
     .attr('cy', y(e.customers.total))
     .attr('r', 5)
     .attr('fill', '#FFF')
-    .attr('stroke', 'red')
+    .attr('stroke', 'steelblue')
     .attr('style', 'cursor: pointer')
     .on('click', (d) => {
       console.log(e.date);
     });
 });
+
+// ---
+
+// --- Tst #6: Last day bids pie
+
+// d3.select('h1').text('Tst');
+elm.append('h2').text('Tst #6: Last day');
+
+const svg3 = elm.append('svg')
+  .attr('width', svgWidth)
+  .attr('height', svgHeight);
+
+const lastDayBidsData = originalData[originalData.length - 1].bids.lastDay;
+console.log(lastDayBidsData);
+const lastDayBidsDataAsPie = [
+  {
+    type: 'Others',
+    percentage: (lastDayBidsData.total - lastDayBidsData.fwd) * 100 / lastDayBidsData.total,
+  },
+  {
+    type: 'FWD',
+    percentage: lastDayBidsData.fwd * 100 / lastDayBidsData.total,
+  },
+];
+const radius =  Math.min(svgWidth, svgHeight) / 2;
+//Create group element to hold pie chart
+const g3 = svg3.append("g")
+  .attr("transform", "translate(" + (svgWidth / 2) + "," + radius + ")") ;
+const color = d3.scaleOrdinal(d3.schemeCategory10);
+const pie = d3.pie().value(d => d.percentage);
+const path = d3.arc()
+  .outerRadius(radius)
+  .innerRadius(0);
+const arc = g3.selectAll("arc")
+  .data(pie(lastDayBidsDataAsPie))
+  .enter()
+  .append("g");
+
+arc.append("path")
+  .attr("d", path)
+  .attr("fill", d => color(d.data.percentage));
+
+const label = d3.arc()
+  .outerRadius(radius)
+  .innerRadius(0);
+
+arc.append("text")
+  .attr("text-anchor", "middle")
+  .attr('fill', '#D3D3D3')
+  .attr("transform", d => "translate(" + label.centroid(d) + ")")
+  .text(d => d.data.type + ": " + d.data.percentage + "%");
 
 // ---
